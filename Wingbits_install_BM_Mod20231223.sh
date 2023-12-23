@@ -171,4 +171,4 @@ echo -e "\n\033[0;32mInstallation completed successfully!\033[0m"
 # Step 8: Check if services are online
 check_service_status
 
-echo -e "\nPlease restart with \"sudo reboot\""
+echo -e "\nPlease restart with \"sudo reboot\" to finalise install"
