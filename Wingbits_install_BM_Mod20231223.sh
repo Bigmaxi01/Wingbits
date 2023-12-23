@@ -4,7 +4,7 @@
 #						- Extended delay for service check at the end
 #						- changed modification of readsb config to append to line rather than replace
 #						- Restarted services at end to load new config
-#						- Added reboot promt to the end
+#						- Added reboot prompt to the end
 
 
 # Throw warning if script is not executed as root
