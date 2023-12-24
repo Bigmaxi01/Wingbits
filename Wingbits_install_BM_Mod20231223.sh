@@ -132,7 +132,13 @@ run_command "Installing readsb" \
 	
 	#BM - Took out above - "sed -i 's|NET_OPTIONS=\".*\"|NET_OPTIONS=\"--net-only --net-connector localhost,30006,json_out\"|' /etc/default/readsb"  \
 	#BM - Could not work out yet how to make the following line work with eval so have separated it out for now...
-	sed -i.bak 's/NET_OPTIONS="[^"]*/& '"--net-connector localhost,30006,json_out"'/' /etc/default/readsb >> $logfile
+if grep -q -- "--net-connector localhost,30006,json_out" /etc/default/readsb; 
+	then
+    echo "readsb alraeady configured for Wingbits" | sudo tee $logfile
+else
+	sed -i.bak 's/NET_OPTIONS="[^"]*/& '"--net-connector localhost,30006,json_out"'/' /etc/default/readsb
+	echo "Added Wingbits config to readsb config file" | sudo tee $logfile
+fi
 
 # Step 5: Download and install Vector
 run_command "Installing vector" \
