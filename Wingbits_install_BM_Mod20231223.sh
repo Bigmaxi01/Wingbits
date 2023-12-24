@@ -130,14 +130,14 @@ run_command "Installing readsb" \
     "sed -i -e 's|After=.*|After=vector.service|' /lib/systemd/system/readsb.service" \
 	"curl -sL https://github.com/wiedehopf/graphs1090/raw/master/install.sh | bash"
 	
-	#BM - Took out above - "sed -i 's|NET_OPTIONS=\".*\"|NET_OPTIONS=\"--net-only --net-connector localhost,30006,json_out\"|' /etc/default/readsb"  \
-	#BM - Could not work out yet how to make the following line work with eval so have separated it out for now...
+#BM - Took out above - "sed -i 's|NET_OPTIONS=\".*\"|NET_OPTIONS=\"--net-only --net-connector localhost,30006,json_out\"|' /etc/default/readsb"  \
+#BM - Could not work out yet how to make the following line work with eval so have separated it out for now...
 if grep -q -- "--net-connector localhost,30006,json_out" /etc/default/readsb; 
 	then
-    echo "readsb alraeady configured for Wingbits" | sudo tee $logfile
+    echo "readsb already configured for Wingbits" | sudo tee >> $logfile
 else
 	sed -i.bak 's/NET_OPTIONS="[^"]*/& '"--net-connector localhost,30006,json_out"'/' /etc/default/readsb
-	echo "Added Wingbits config to readsb config file" | sudo tee $logfile
+	echo "Added Wingbits config to readsb config file" | sudo tee >> $logfile
 fi
 
 # Step 5: Download and install Vector
