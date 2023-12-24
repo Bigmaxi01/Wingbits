@@ -148,7 +148,7 @@ run_command "Installing vector" \
   "mkdir -p /etc/vector" \
   "touch /etc/vector/vector.yaml" \
   "curl -o /etc/vector/vector.yaml 'https://gitlab.com/wingbits/config/-/raw/master/vector.yaml'" \
-  "sed -i 's|ExecStart=.*|ExecStart=/usr/bin/vector --watch-config|' /lib/systemd/system/vector.service" \ 
+  "sed -i 's|ExecStart=.*|ExecStart=/usr/bin/vector --watch-config|' /lib/systemd/system/vector.service" \
   "echo \"DEVICE_ID=\\\"$device_id\\\"\" | sudo tee -a /etc/default/vector > /dev/null"
 
 
